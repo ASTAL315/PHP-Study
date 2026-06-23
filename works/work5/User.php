@@ -5,13 +5,15 @@ class User {
     private int $id;
     private string $name;
     private int $age;
+    private $address;
     // ↑フィールド============================
 
     // コンストラクタ
-    function __construct(int $id, string $name, int $age) {
+    function __construct(int $id, string $name, int $age, string $address) {
         $this->id = $id;
         $this->name = $name;
         $this->age = $age;
+        $this->address = $address;
     }
 
     // idを取得
@@ -31,7 +33,10 @@ class User {
 
     // 年齢を変更(問題2: バリデーションを追加すること)
     function setAge(int $age): void {
-        $this->age = $age;
+        if($age < 0 || $age > 150)
+            echo "不正な年齢です\n";
+        return;
+         $this->age = $age;
     }
 
     // 年齢を取得
@@ -39,8 +44,15 @@ class User {
         return $this->age;
     }
 
+    function setAddress(string $address): void {
+        $this->address = $address;
+    }
+    function getAddress(): string {
+        return $this->address;
+    }
+
     // 問題3
     function getOlder(): void {
-
+        return $age+1;
     }
 }
